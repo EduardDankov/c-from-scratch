@@ -1,0 +1,7 @@
+# Git directory
+.git
+
+# Output directories
+out/
+bin/
+
