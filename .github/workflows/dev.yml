@@ -3,6 +3,8 @@ name: C/C++ CI
 on:
   push:
     branches: [ main ]
+    tags:
+      - 'commit/*'
   pull_request:
     types: [ opened, edited, reopened, review_requested ]
     branches: [ main ]
