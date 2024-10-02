@@ -2,12 +2,12 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ main ]
-    tags:
-      - 'commit/*'
+    branches: 
+      - '*'
   pull_request:
     types: [ opened, edited, reopened, review_requested ]
-    branches: [ main ]
+    branches: 
+      - '*'
 
 jobs:
   build:
