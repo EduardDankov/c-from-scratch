@@ -14,12 +14,14 @@ jobs:
 
     steps:
     - name: Install dependencies
-      run: sudo apt-get update; sudo apt install gcc -y
+      run: sudo apt update; sudo apt install gcc -y
     - uses: actions/checkout@v2
-    - name: Provide execution permission
+    - name: Provide builder execution permission
       run: sudo chmod +x build.sh
     - name: Run build
       run: ./build.sh
+    - name: Provide binary execution permission
+      run: sudo chmod +x bin/app
     - name: Execute binary
       run: ./bin/app
 
