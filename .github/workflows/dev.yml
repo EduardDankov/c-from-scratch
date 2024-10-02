@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ opened, edited, reopened, review_requested ]
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      run: sudo apt-get update; sudo apt install gcc -y
+    - uses: actions/checkout@v2
+    - name: Provide execution permission
+      run: sudo chmod +x build.sh
+    - name: Run build
+      run: ./build.sh
+
