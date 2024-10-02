@@ -22,4 +22,8 @@ jobs:
       run: sudo chmod +x build.sh
     - name: Run build
       run: ./build.sh
+    - name: Provide binary execution permission
+      run: sudo chmod +x bin/app
+    - name: Run binary
+      run: ./bin/app
 
