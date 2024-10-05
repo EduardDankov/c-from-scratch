@@ -2,6 +2,7 @@
 
 #include "lib/memory.h"
 #include "lib/string.h"
+#include "lib/output.h"
 
 const char * DEFAULT_APP_TITLE = "dkv";
 const char * WRONG_ARGUMENT_COUNT = "Error: Wrong argument count.";
