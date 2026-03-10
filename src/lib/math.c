@@ -4,7 +4,7 @@ int math_pow(const int num, const int pow)
 {
     if (pow == 0)
     {
-        return 0;
+        return 1;
     }
 
     if (pow == 1)
@@ -14,7 +14,7 @@ int math_pow(const int num, const int pow)
 
     if (pow < 0)
     {
-        return 0; // TODO: implement
+        return 1; // TODO: implement
     }
 
     int result = num;
