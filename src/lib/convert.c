@@ -44,17 +44,17 @@ int conv_str_to_int(const char * value)
     }
 
     int result = 0;
-    int isNegative = value[0] == '-';
+    int isNegative = (value[0] == '-');
 
     for (int i = isNegative; i < length; i++)
     {
-        int val = value[i] + 0x30; // adjust to ascii
+        int val = value[i] - 0x30; // adjust to ascii
         result += val * math_pow(10, length - i - 1);
     }
 
     if (isNegative)
     {
-        result = result - result - result;
+        result = -result;
     }
     return result;
 }
@@ -65,7 +65,7 @@ char * conv_int_to_str(const int value)
     const int BUFFER_SIZE = MAX_INT_SIZE + 2; // max size + negative sign + null terminator
 
     char * sResult = mem_alloc(BUFFER_SIZE);
-    sResult[0] = '-'; // first character responsible for the sign
+    sResult[0] = '0'; // first character responsible for the sign
     sResult[BUFFER_SIZE - 1] = '\0';
 
     for (int i = 0; i < MAX_INT_SIZE; i++)
@@ -84,6 +84,10 @@ char * conv_int_to_str(const int value)
     if (value >= 0)
     {
         sResult++;
+    }
+    else
+    {
+        sResult[0] = '-';
     }
     return sResult;
 }

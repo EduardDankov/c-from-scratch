@@ -14,7 +14,7 @@ int math_pow(const int num, const int pow)
 
     if (pow < 0)
     {
-        return 1; // TODO: implement
+        return 1 / math_pow(num, -pow);
     }
 
     int result = num;
@@ -33,5 +33,5 @@ int math_mod(const int num)
         return num;
     }
     
-    return num - num - num;
+    return -num;
 }
