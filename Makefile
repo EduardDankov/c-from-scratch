@@ -3,7 +3,7 @@
 BUILD_DIR = build
 BUILD_TESTS_DIR = build-tests
 
-all: src tests
+all: clean src tests
 
 src:
 	$(MAKE) -C src
