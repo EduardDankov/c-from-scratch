@@ -11,11 +11,22 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'chmod +x ./build_bash.sh'
-                        sh './build_bash.sh'
+                        sh 'make'
                         archiveArtifacts artifacts: 'build/bin/*', fingerprint: true
                     } catch (Exception e) {
-                        error "Setup failed. Check the logs for details."
+                        error "Build failed. Check the logs for details."
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    try {
+                        sh 'chmod +x build/bin/*'
+                        sh './build/bin/c-from-scratch'
+                    } catch (Exception e) {
+                        error "Tests failed. Check the logs for details."
                     }
                 }
             }
