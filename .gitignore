@@ -2,8 +2,7 @@
 .git
 
 # Output directories
-out/
-bin/
+build/
 
 .idea/
 .DS_Store

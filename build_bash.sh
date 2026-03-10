@@ -1,21 +1,18 @@
 #! /usr/bin/bash
 
-# Re-create directory for compiled files
-rm -rf ./out
-mkdir out
+# Re-create build directory
+rm -rf ./build
+mkdir build
+mkdir build/out
+mkdir build/bin
 
 # Compile source files with headers
-gcc -Ilib main.c -o out/main.o -c
-gcc -Ilib lib/memory.c -o out/memory.o -c
-gcc -Ilib lib/string.c -o out/string.o -c
-gcc -Ilib lib/io.c -o out/io.o -c
-gcc -Ilib lib/math.c -o out/math.o -c
-gcc -Ilib lib/convert.c -o out/convert.o -c
-
-# Re-create directory for app binary
-rm -rf ./bin
-mkdir bin
+gcc -Ilib main.c -o build/out/main.o -c
+gcc -Ilib lib/memory.c -o build/out/memory.o -c
+gcc -Ilib lib/string.c -o build/out/string.o -c
+gcc -Ilib lib/io.c -o build/out/io.o -c
+gcc -Ilib lib/math.c -o build/out/math.o -c
+gcc -Ilib lib/convert.c -o build/out/convert.o -c
 
 # Link compiled files
-gcc -o bin/app out/*
-
+gcc -o build/bin/app build/out/*
