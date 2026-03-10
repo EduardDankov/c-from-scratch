@@ -1,11 +1,16 @@
-.PHONY: all src clean
+.PHONY: all src tests clean
 
 BUILD_DIR = build
+BUILD_TESTS_DIR = build-tests
 
-all: src
+all: src tests
 
 src:
 	$(MAKE) -C src
 
+tests:
+	$(MAKE) -C tests
+
 clean:
-	rm -rf $(BUILD_DIR)
+	$(MAKE) -C src clean
+	$(MAKE) -C tests clean

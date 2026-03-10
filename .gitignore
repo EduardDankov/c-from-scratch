@@ -3,6 +3,7 @@
 
 # Output directories
 build/
+build-tests/
 
 .idea/
 .DS_Store

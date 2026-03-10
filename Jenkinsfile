@@ -23,8 +23,8 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'chmod +x build/bin/*'
-                        sh './build/bin/c-from-scratch'
+                        sh 'chmod +x build-tests/bin/*'
+                        sh './build-tests/bin/unittests'
                     } catch (Exception e) {
                         error "Tests failed. Check the logs for details."
                     }
@@ -35,10 +35,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build completed successfully.'
+            echo 'Validation completed successfully.'
         }
         failure {
-            echo 'Build failed. Check the logs for details.'
+            echo 'Validation failed. Check the logs for details.'
         }
     }
 }

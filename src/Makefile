@@ -30,3 +30,6 @@ $(OUT_DIR)/%.o: $(SRC_DIR)/%.c | $(OUT_DIR)
 
 $(BIN_DIR) $(OUT_DIR) $(OUT_LIB_DIR):
 	mkdir -p $@
+
+clean:
+	rm -rf ../$(BUILD_DIR)
