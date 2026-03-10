@@ -5,3 +5,5 @@
 out/
 bin/
 
+.idea/
+.DS_Store
