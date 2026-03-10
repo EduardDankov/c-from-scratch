@@ -51,21 +51,19 @@ TestResult assert_equal_str(const char * expected, const char * actual);
 #define END_TEST_SUITE() printf("\n=== END OF TEST SUITE ===\n\n");
 
 #define ASSERT_EQ_INT(title, expectedValue, actualValue) { \
-    free(test_result); \
-    test_result = malloc(sizeof(TestResult)); \
     *test_result = assert_equal_int(expectedValue, actualValue); \
     if (test_result->result == TEST_FAILED) { \
         printf("Assertion failed (%s): expected %d, got %d\n", title, test_result->expected.intExpected, test_result->actual.intActual); \
+        free(test_result); \
         return 0; \
     } \
 }
 
 #define ASSERT_EQ_STR(title, expectedValue, actualValue) { \
-    free(test_result); \
-    test_result = malloc(sizeof(TestResult)); \
     *test_result = assert_equal_str(expectedValue, actualValue); \
     if (test_result->result == TEST_FAILED) { \
         printf("Assertion failed (%s): expected \"%s\", got \"%s\"\n", title, test_result->expected.strExpected, test_result->actual.strActual); \
+        free(test_result); \
         return 0; \
     } \
 }
