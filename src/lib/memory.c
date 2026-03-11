@@ -32,7 +32,12 @@ void * mem_alloc(int size)
 
 void mem_free(void * ptr)
 {
-    mem_free_block * block = (mem_free_block *)(((char *)ptr) - sizeof(int));
+    if (!ptr)
+    {
+        return;
+    }
+
+    mem_free_block * block = ((mem_free_block *)ptr) - 1;
     block->next = mem_free_block_list_head.next;
     mem_free_block_list_head.next = block;
 }
