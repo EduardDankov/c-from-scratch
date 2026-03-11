@@ -1,9 +1,15 @@
 #include "string.h" 
 
 #include "memory.h"
+#include "io.h"
 
 int str_size(const char * str)
 {
+    if (!str)
+    {
+        return 0;
+    }
+
     int size = 0;
     while (str[size] != '\0')
     {
@@ -14,6 +20,18 @@ int str_size(const char * str)
 
 char * str_copy(char * dest, const char * src)
 {
+    if (!src)
+    {
+        io_println("Failed to copy string: src is null.");
+        return dest;
+    }
+
+    if (!dest)
+    {
+        int length = str_size(src);
+        dest = mem_alloc(length);
+    }
+
     char * tmp = dest;
     while ((*dest++ = *src++) != 0);
     return tmp;
@@ -21,6 +39,21 @@ char * str_copy(char * dest, const char * src)
 
 char * str_concat(const char * dest, const char * src)
 {
+    if (!src)
+    {
+        io_println("Failed to concat strings: src is null.");
+        char * result = "";
+        str_copy(result, dest);
+        return result;
+    }
+    if (!dest)
+    {
+        io_println("Failed to concat strings: dest is null.");
+        char * result = "";
+        str_copy(result, src);
+        return result;
+    }
+
     const int dest_len = str_size(dest);
     const int src_len = str_size(src);
     const int result_len = dest_len + src_len - 1;
@@ -47,6 +80,17 @@ char * str_concat(const char * dest, const char * src)
 
 int str_compare(const char * lhs, const char * rhs)
 {
+    if (!lhs)
+    {
+        io_println("Failed to compare strings: lhs is null.");
+        return 1;
+    }
+    if (!rhs)
+    {
+        io_println("Failed to compare strings: rhs is null.");
+        return -1;
+    }
+
     const int lhs_len = str_size(lhs);
     const int rhs_len = str_size(rhs);
 

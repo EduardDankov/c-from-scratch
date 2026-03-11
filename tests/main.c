@@ -4,12 +4,14 @@
 
 #include "lib/test_convert.h"
 #include "lib/test_math.h"
+#include "lib/test_string.h"
 
 int main()
 {
     printf("Starting test execution.\n");
     run_test_convert();
     run_test_math();
+    run_test_string();
 
     printf("\n=== TEST REPORT ===\n\n");
     print_report();
